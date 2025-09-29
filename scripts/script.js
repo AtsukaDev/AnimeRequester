@@ -27,8 +27,51 @@ async function getAnime() {
     return data;
 }
 
+function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episodeValue, leaderboardValue){
+
+    let card = document.createElement("div");
+    let Title = document.createElement("h1");
+    let imgCard = document.createElement("img");
+    let description = document.createElement("p");
+    let type = document.createElement("p");
+    let leaderboard = document.createElement("p");
+    let episode = document.createElement("p");
+    
+    Title.textContent += titleValue;
+
+    imgCard.srcset = imgCardUrl;
+
+    description.textContent = "Description : ";
+    description.textContent += descriptionValue;
+
+    type.textContent = "Type : ";
+    type.textContent += typeValue;
+
+    leaderboard.textContent = "Leaderboard : ";
+    leaderboard.textContent += leaderboardValue;
+
+    episode.textContent = "Episodes : ";
+    episode.textContent += episodeValue;
+
+    card.classList.add("font-[Roboto]")
+    Title.classList.add("font-bold");
+
+
+    card.appendChild(Title);
+    card.appendChild(imgCard);
+    card.appendChild(description);
+    card.appendChild(type);
+    card.appendChild(leaderboard);
+    card.appendChild(episode);
+    document.body.appendChild(card);
+}
+
 async function searchAnime(){
     const data = await getAnime();
-    console.log(data);
+    for(let anime of data){
+        generateCard(anime.title, anime.image, anime.synopsis, "", anime.episodes, anime.ranking);
+    }
 }
+
+
 
