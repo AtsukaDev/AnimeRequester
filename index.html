@@ -16,6 +16,15 @@
 </head>
 
 <body class="bg-radial from-[#00ddff] from-20% to-[#006e9a] h-[100vh]">
+    <div class="absolute right-0 mt-4 mr-4">
+        <div class=" w-11 h-5 ">
+            <input checked id="switch-component" type="checkbox"
+                class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-slate-800 cursor-pointer transition-colors duration-300" />
+            <label for="switch-component"
+                class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
+            </label>
+        </div>
+    </div>
     <div class="content-center w-full">
         <h1 class="text-center text-6xl m-10 font-bold">
             Anime Requester
@@ -25,9 +34,9 @@
         <div class="flex content-center justify-center items-center mb-2 gap-3">
             <select id="searchSelect"
                 class="w-15 ml-2 bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-12 text-center md:w-30">
-                <option value="title">Search by title</option>
-                <option value="id">Search by id</option>
-                <option value="ranking">Search by ranking</option>
+                <option value="title">Title</option>
+                <option value="id">Id</option>
+                <option value="ranking">Ranking</option>
             </select>
             <input type="text" id="searchQuery"
                 class="bg-white w-[70%] pl-1 h-12 rounded-xl shadow-lg inset-shadow-sm focus:border-0 focus:outline-0">
@@ -39,8 +48,8 @@
 
         </div>
     </div>
-    
-    
+
+
 
 
 </body>
