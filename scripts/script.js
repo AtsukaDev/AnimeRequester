@@ -60,7 +60,7 @@ function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episo
     let type = document.createElement("p");
     let leaderboard = document.createElement("p");
     let episode = document.createElement("p");
-
+    
     Title.textContent += titleValue;
 
     imgCard.srcset = imgCardUrl;
