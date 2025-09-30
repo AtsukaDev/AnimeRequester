@@ -1,10 +1,14 @@
 const typeSearch = document.getElementById('searchSelect');
 const searchInput = document.getElementById('searchQuery');
 const searchButton = document.getElementById('searchButton');
+const cardDiv = document.getElementById('animeCards');
+
+searchButton.addEventListener("click", searchAnime);
 
 async function getAnime() {
 
     const input = searchInput.value;
+    console.log(input);
 
     const options = {
         method: 'GET',
@@ -19,16 +23,35 @@ async function getAnime() {
         // Search by title
 
         url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${input}`;
-       
+
+    }
+    else if (typeSearch.value == "id") {
+        // Search by id
+        url = `https://anime-db.p.rapidapi.com/anime/by-id/${input}`;
+
+    }
+    else if (typeSearch.value == "ranking") {
+        // Search by ranking
+        url = `https://anime-db.p.rapidapi.com/anime/by-ranking/${input}`;
+    }
+
+    else {
+        return [];
     }
 
     const response = await fetch(url, options);
-    if (response.status != 200) return -1;
-    const data = (await response.json()).data;
+    if (response.status != 200) return [];
+    let data = (await response.json());
     return data;
 }
 
-function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episodeValue, leaderboardValue){
+function clearCards() {
+    while (cardDiv.firstChild) {
+        cardDiv.removeChild(cardDiv.firstChild);
+    }
+}
+
+function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episodeValue, leaderboardValue) {
 
     let card = document.createElement("div");
     let Title = document.createElement("h1");
@@ -37,16 +60,16 @@ function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episo
     let type = document.createElement("p");
     let leaderboard = document.createElement("p");
     let episode = document.createElement("p");
-    
+
     Title.textContent += titleValue;
 
     imgCard.srcset = imgCardUrl;
 
-    description.textContent = "Description : ";
+    description.textContent = "Synopsis : ";
     description.textContent += descriptionValue;
 
-    type.textContent = "Type : ";
-    type.textContent += typeValue;
+    type.textContent = "Genres : ";
+    type.textContent += typeValue.join(", ");
 
     leaderboard.textContent = "Leaderboard : ";
     leaderboard.textContent += leaderboardValue;
@@ -64,14 +87,25 @@ function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episo
     card.appendChild(type);
     card.appendChild(leaderboard);
     card.appendChild(episode);
-    document.body.appendChild(card);
+    cardDiv.appendChild(card);
 }
 
-async function searchAnime(){
+async function searchAnime() {
+    clearCards();
     const data = await getAnime();
-    for(let anime of data){
-        generateCard(anime.title, anime.image, anime.synopsis, "", anime.episodes, anime.ranking);
+    
+    console.log(data)
+    if(typeSearch.value != "title"){
+        generateCard(data.title, data.image, data.synopsis, data.genres, data.episodes, data.ranking);
     }
+    else {
+        for (let anime of data.data) {
+
+            generateCard(anime.title, anime.image, anime.synopsis, anime.genres, anime.episodes, anime.ranking);
+        }
+    }
+    
+
 }
 
 
