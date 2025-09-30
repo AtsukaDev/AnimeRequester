@@ -1,5 +1,6 @@
 const typeSearch = document.getElementById('searchSelect');
-const searchInput = document.getElementById('searchQuery')
+const searchInput = document.getElementById('searchQuery');
+const searchButton = document.getElementById('searchButton');
 
 async function getAnime() {
 
