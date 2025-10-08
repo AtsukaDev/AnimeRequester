@@ -2,52 +2,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Requester</title>
-    <link rel="stylesheet" href="./styles/style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Gowun+Batang:wght@400;700&family=Honk&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nabla&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Reem+Kufi+Fun:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-    </style>
-    <script defer src="./scripts/script.js"></script>
-    <script src="https://kit.fontawesome.com/68b987a37a.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Requester</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Gowun+Batang:wght@400;700&family=Honk&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nabla&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Reem+Kufi+Fun:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+  </style>
+  <script defer src="./scripts/script.js"></script>
+  <script src="https://kit.fontawesome.com/68b987a37a.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      content: ["./*.html"],
+      darkMode: "class"
+    };
+
+  </script>
 
 </head>
 
-<body class="bg-radial from-[#00ddff] from-20% to-[#006e9a] h-[100vh]">
-    <div class="absolute right-0 mt-4 mr-4">
-        <div class=" w-11 h-5 ">
-            <input checked id="switch-component" type="checkbox"
-                class="peer appearance-none w-11 h-5 bg-slate-100 rounded-full checked:bg-slate-800 cursor-pointer transition-colors duration-300" />
-            <label for="switch-component"
-                class="absolute top-0 left-0 w-5 h-5 bg-white rounded-full border border-slate-300 shadow-sm transition-transform duration-300 peer-checked:translate-x-6 peer-checked:border-slate-800 cursor-pointer">
-            </label>
-        </div>
-    </div>
-    <div class="content-center w-full">
-        <h1 class="text-center text-6xl m-10 font-bold">
-            Anime Requester
-        </h1>
-    </div>
-    <div>
-        <div class="flex content-center justify-center items-center mb-2 gap-3">
-            <select id="searchSelect"
-                class="w-15 ml-2 bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-12 text-center md:w-30">
-                <option value="title">Title</option>
-                <option value="id">Id</option>
-                <option value="ranking">Ranking</option>
-            </select>
-            <input type="text" id="searchQuery"
-                class="bg-white w-[70%] pl-1 h-12 rounded-xl shadow-lg inset-shadow-sm focus:border-0 focus:outline-0">
-            <button id="searchButton" type="search"
-                class="w-12 h-12 mr-2 rounded-full hover:cursor-pointer inset-shadow-sm shadow-xl drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:scale-110 hover:bg-[#006e9a]"><i
-                    class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-        <div id="animeCards">
+<body class="bg-[#ffc6c2] dark:bg-[#745578]  h-[100vh]">
+  <div class="absolute right-0 mt-4 mr-4">
+    <button id="theme-toggle" type="button"
+      class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+      <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+      </svg>
+      <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+          fill-rule="evenodd" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="content-center w-full">
+    <h1 class="text-center text-6xl m-10 font-bold">
+      Anime Requester
+    </h1>
+  </div>
+  <div>
+    <div class="flex content-center justify-center items-center mb-2 gap-3">
+      <select id="searchSelect"
+        class="w-15 ml-2 bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-12 text-center md:w-30">
+        <option value="title">Title</option>
+        <option value="id">Id</option>
+        <option value="ranking">Ranking</option>
+      </select>
+      <input type="text" id="searchQuery"
+        class="bg-white w-[70%] pl-1 h-12 rounded-xl shadow-lg inset-shadow-sm focus:border-0 focus:outline-0">
+      <button id="searchButton" type="search"
+        class="w-12 h-12 mr-2 rounded-full hover:cursor-pointer inset-shadow-sm shadow-xl drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:scale-110 hover:bg-[#006e9a]"><i
+          class="fa-solid fa-magnifying-glass"></i></button>
 
-        </div>
+      <button id="clearButton" type="button" class="w-12 h-12 mr-2 rounded-full hover:cursor-pointer inset-shadow-sm shadow-xl drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:scale-110 hover:bg-[#006e9a]"><i
+          class="fa-solid fa-eraser"></i> </button>
     </div>
+    <div id="animeCards">
+
+    </div>
+  </div>
 
 
 
