@@ -41,7 +41,7 @@ darkModeButton.addEventListener("click", function () {
     }
 });
 
-
+document.getElementById("clearButton").addEventListener("click", clearCards);
 
 
 async function getAnime() {
