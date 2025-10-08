@@ -93,13 +93,31 @@ function clearCards() {
 function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episodeValue, leaderboardValue) {
 
     let card = document.createElement("div");
+    card.classList.add("w-full","mx-4","md:w-5/12","md:mx-0","text-center","shadow-xl","bg-[#ff7a7a]","rounded-2xl","h-full")
+    
     let Title = document.createElement("h1");
-    let imgCard = document.createElement("img");
-    let description = document.createElement("p");
-    let type = document.createElement("p");
-    let leaderboard = document.createElement("p");
-    let episode = document.createElement("p");
+    Title.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1")
 
+    let grid = document.createElement("div");
+    grid.classList.add("grid","gap-5","grid-cols-4","grid-rows-3")
+
+    let imgCard = document.createElement("img");
+    imgCard.classList.add("rounded-xl","col-span-2","m-2","row-span-3","justify-center");
+
+
+    let type = document.createElement("p");
+    type.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","col-span-2","row-span-2");
+
+    let leaderboard = document.createElement("p");
+    leaderboard.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","content-center");
+    
+    let episode = document.createElement("p");
+    episode.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","content-center");
+
+    let description = document.createElement("p");
+    description.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","text-justify","p-3");
+    
+    
     Title.textContent += titleValue;
 
     imgCard.srcset = imgCardUrl;
@@ -110,10 +128,10 @@ function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episo
     type.textContent = "Genres : ";
     type.textContent += typeValue.join(", ");
 
-    leaderboard.textContent = "Leaderboard : ";
+    leaderboard.textContent = "TOP ";
     leaderboard.textContent += leaderboardValue;
 
-    episode.textContent = "Episodes : ";
+    episode.textContent = "Nb épisodes";
     episode.textContent += episodeValue;
 
     card.classList.add("font-[Roboto]")
@@ -121,11 +139,12 @@ function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episo
 
 
     card.appendChild(Title);
-    card.appendChild(imgCard);
+    grid.appendChild(imgCard);
+    grid.appendChild(type);
+    grid.appendChild(leaderboard);
+    grid.appendChild(episode);
+    card.appendChild(grid);
     card.appendChild(description);
-    card.appendChild(type);
-    card.appendChild(leaderboard);
-    card.appendChild(episode);
     cardDiv.appendChild(card);
 }
 
