@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="bg-[#ffc6c2] dark:bg-[#745578]  h-[100vh]">
+<body class="bg-[#ffc6c2] dark:bg-[#664662]  h-[100vh]">
   <div class="absolute right-0 mt-4 mr-4">
     <button id="theme-toggle" type="button"
       class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
@@ -38,26 +38,37 @@
     </button>
   </div>
   <div class="content-center w-full">
-    <h1 class="text-center text-6xl m-10 font-bold">
+    <h1 class="text-center text-6xl m-10 font-bold text-[#664662] dark:text-[#ffc6c2]">
       Anime Requester
     </h1>
   </div>
   <div>
     <div class="flex content-center justify-center items-center mb-2 gap-3">
-      <select id="searchSelect"
-        class="w-15 ml-2 bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block h-12 text-center md:w-30">
-        <option value="title">Title</option>
-        <option value="id">Id</option>
-        <option value="ranking">Ranking</option>
-      </select>
-      <input type="text" id="searchQuery"
-        class="bg-white w-[70%] pl-1 h-12 rounded-xl shadow-lg inset-shadow-sm focus:border-0 focus:outline-0">
+      <button id="filterButton" class="ml-2">Filters</button>
+      <input type="text" id="searchQuery" placeholder="Akagami no Shirayuki-hime.."
+        class="bg-white w-[70%] pl-4 h-12 rounded-xl shadow-lg inset-shadow-sm focus:border-0 focus:outline-0">
       <button id="searchButton" type="search"
         class="w-12 h-12 mr-2 rounded-full hover:cursor-pointer inset-shadow-sm shadow-xl drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:scale-110 hover:bg-[#006e9a]"><i
-          class="fa-solid fa-magnifying-glass"></i></button>
+          class="fa-solid fa-magnifying-glass text-[#745578] dark:text-[#ffc6c2]"></i></button>
 
-      <button id="clearButton" type="button" class="w-12 h-12 mr-2 rounded-full hover:cursor-pointer inset-shadow-sm shadow-xl drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:scale-110 hover:bg-[#006e9a]"><i
-          class="fa-solid fa-eraser"></i> </button>
+      <button id="clearButton" type="button"
+        class="w-12 h-12 mr-2 rounded-full hover:cursor-pointer inset-shadow-sm shadow-xl drop-shadow-xl transition delay-150 duration-300 ease-in-out hover:scale-110 hover:bg-[#006e9a]"><i
+          class="fa-solid fa-eraser text-[#745578] dark:text-[#ffc6c2]"></i> </button>
+    </div>
+    <div id="filters" class="hidden content-center justify-center items-center mt-6 mb-6">
+      <div class="w-[80%] bg-[#FF7A7A] rounded-xl p-2">
+        <select id="searchSelect"
+          class="flex w-48 bg-white border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 h-12 text-center md:w-30 left-0">
+          <option value="title">Title</option>
+          <option value="id">Id</option>
+          <option value="ranking">Ranking</option>
+        </select>
+        <div id="genresButtons" class="flex flex-wrap gap-2  mt-2">
+
+
+        </div>
+      </div>
+      
     </div>
     <div id="animeCards" class="flex flex-wrap flex-row justify-center gap-4">
 

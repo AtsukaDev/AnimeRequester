@@ -3,6 +3,22 @@ const typeSearch = document.getElementById('searchSelect');
 const searchInput = document.getElementById('searchQuery');
 const searchButton = document.getElementById('searchButton');
 const cardDiv = document.getElementById('animeCards');
+const filterDiv = document.getElementById('filters');
+const genresButtonDiv = document.getElementById('genresButtons');
+const animeGenres = ["Award Winning", "Action", "Suspense", "Horror", "Ecchi", "Avant Garde", "Sports", "Supernatural", "Fantasy", "Gourmet", "Boys Love", "Drama", "Comedy", "Mystery", "Girls Love", "Slice of Life", "Adventure", "Romance", "Sci-Fi"]
+for (let genre of animeGenres) {
+    genresButtonDiv.innerHTML += `
+    <div class="flex justify-center items-center p-1 rounded-2xl">
+    <input type="checkbox" name="${genre}" class="flex" />
+    <label for="${genre}" class="flex p-2 " >${genre}</label>
+    </div>
+    `
+}
+
+
+
+
+
 localStorage.setItem("color-theme", "light");
 searchButton.addEventListener("click", searchAnime);
 
@@ -56,12 +72,27 @@ async function getAnime() {
             'x-rapidapi-host': 'anime-db.p.rapidapi.com'
         }
     };
+
+
     let url;
 
     if (typeSearch.value == "title") {
         // Search by title
 
         url = `https://anime-db.p.rapidapi.com/anime?page=1&size=10&search=${input}`;
+
+        // Get genres to update request
+        let genresSelected = genresButtonDiv.querySelectorAll('input[type="checkbox"]:checked');
+        if (genresSelected.length > 0) {
+            url += "&genres=";
+            for(let genreInput of genresSelected){
+                url += genreInput.name + "%2C";
+            }
+        }
+
+       
+
+
 
     }
     else if (typeSearch.value == "id") {
@@ -93,31 +124,31 @@ function clearCards() {
 function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episodeValue, leaderboardValue) {
 
     let card = document.createElement("div");
-    card.classList.add("w-full","mx-4","md:w-5/12","md:mx-0","text-center","shadow-xl","bg-[#ff7a7a]","rounded-2xl","h-full")
-    
+    card.classList.add("w-full", "mx-4", "md:w-5/12", "md:mx-0", "text-center", "shadow-xl", "bg-[#ff7a7a]", "rounded-2xl", "h-full")
+
     let Title = document.createElement("h1");
-    Title.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1")
+    Title.classList.add("m-2", "bg-[#ffacac]", "rounded-xl", "shadow-lg", "p-1")
 
     let grid = document.createElement("div");
-    grid.classList.add("grid","gap-5","grid-cols-4","grid-rows-3")
+    grid.classList.add("grid", "gap-5", "grid-cols-4", "grid-rows-3")
 
     let imgCard = document.createElement("img");
-    imgCard.classList.add("rounded-xl","col-span-2","m-2","row-span-3","justify-center");
+    imgCard.classList.add("rounded-xl", "col-span-2", "m-2", "row-span-3", "justify-center");
 
 
     let type = document.createElement("p");
-    type.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","col-span-2","row-span-2");
+    type.classList.add("m-2", "bg-[#ffacac]", "rounded-xl", "shadow-lg", "p-1", "col-span-2", "row-span-2");
 
     let leaderboard = document.createElement("p");
-    leaderboard.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","content-center", "font-bold", "text-xl");
-    
+    leaderboard.classList.add("m-2", "bg-[#ffacac]", "rounded-xl", "shadow-lg", "p-1", "content-center", "font-bold", "text-xl");
+
     let episode = document.createElement("p");
-    episode.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","content-center", "font-bold", "text-xl");
+    episode.classList.add("m-2", "bg-[#ffacac]", "rounded-xl", "shadow-lg", "p-1", "content-center", "font-bold", "text-xl");
 
     let description = document.createElement("p");
-    description.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","text-justify","p-3");
-    
-    
+    description.classList.add("m-2", "bg-[#ffacac]", "rounded-xl", "shadow-lg", "p-1", "text-justify", "p-3");
+
+
     Title.textContent += titleValue;
 
     imgCard.srcset = imgCardUrl;
@@ -163,6 +194,16 @@ async function searchAnime() {
 
 
 }
+
+
+
+document.getElementById("filterButton").addEventListener("click", () => {
+    if (filterDiv.classList.contains("hidden")) {
+        filterDiv.classList.replace("hidden", "flex");
+        return;
+    }
+    filterDiv.classList.replace("flex", "hidden");
+})
 
 
 
