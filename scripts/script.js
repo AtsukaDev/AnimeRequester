@@ -109,30 +109,28 @@ function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episo
     type.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","col-span-2","row-span-2");
 
     let leaderboard = document.createElement("p");
-    leaderboard.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","content-center");
+    leaderboard.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","content-center", "font-bold", "text-xl");
     
     let episode = document.createElement("p");
-    episode.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","content-center");
+    episode.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","content-center", "font-bold", "text-xl");
 
     let description = document.createElement("p");
     description.classList.add("m-2","bg-[#ffacac]","rounded-xl","shadow-lg","p-1","text-justify","p-3");
     
-
+    
     Title.textContent += titleValue;
 
     imgCard.srcset = imgCardUrl;
 
-    description.textContent = "Synopsis : ";
-    description.textContent += descriptionValue;
+    description.textContent = descriptionValue;
 
     type.textContent = "Genres : ";
     type.textContent += typeValue.join(", ");
 
-    leaderboard.textContent = "TOP ";
+    leaderboard.textContent = "#";
     leaderboard.textContent += leaderboardValue;
 
-    episode.textContent = "Nb épisodes";
-    episode.textContent += episodeValue;
+    episode.textContent = `${episodeValue} Episodes`;
 
     card.classList.add("font-[Roboto]")
     Title.classList.add("font-bold");
