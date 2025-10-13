@@ -62,7 +62,7 @@ document.getElementById("clearButton").addEventListener("click", clearCards);
 function handle404(){
     cardDiv.innerHTML = `
     <div class="flex items-center justify-center content-center">
-    <h2 class="text-3xl"> Aucun résultat n'a été trouvé pour cette recherche.. </h2>
+    <h2 class="text-3xl dark:text-white"> Aucun résultat n'a été trouvé pour cette recherche.. </h2>
     <img src="https://media.tenor.com/Jfvooie8DbAAAAAj/monkey-cymbals.gif" class="justify-center" />
     </div>
     `
