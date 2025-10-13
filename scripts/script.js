@@ -93,10 +93,10 @@ function clearCards() {
 function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episodeValue, leaderboardValue) {
 
     let card = document.createElement("div");
-    card.classList.add("w-full","mx-4","lg:w-[46%]","lg:mx-0","text-center","shadow-xl","bg-[#ff7a7a]","dark:bg-[#42183c]","rounded-2xl","h-500","text-[#571b4f]","dark:text-[#ffc6c2]","my-5","hover:shadow-pop-br");
+    card.classList.add("w-full","mx-4","lg:w-[46%]","lg:mx-0","text-center","shadow-2xl","dark:shadow-lg","dark:shadow-[#c77dff]","bg-[#ff7a7a]","dark:bg-[#240046]","rounded-2xl","h-500","text-[#571b4f]","dark:text-[#ffc6c2]","my-5","hover:shadow-pop-br","drop-shadow-xl/25", "dark:drop-shadow-xl/10", "dark:drop-shadow-[#e0aaff]");
     
     let Title = document.createElement("h1");
-    Title.classList.add("m-2","bg-[#ffacac]","dark:bg-[#612759]","rounded-xl","shadow-lg","p-1","hover:shadow-pop-br")
+    Title.classList.add("m-2","bg-[#ffacac]","dark:bg-[#3c096c]","rounded-xl","shadow-lg","p-1","hover:shadow-pop-br")
 
     let grid = document.createElement("div");
     grid.classList.add("grid","grid-cols-6","grid-rows-5")
@@ -106,16 +106,16 @@ function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episo
 
     let textGenre = document.createElement("h1");
     textGenre.textContent = "GENRES"
-    textGenre.classList.add("rounded-xl","col-span-3","m-2","row-span-1","justify-center","font-bold","bg-[#ffacac]","dark:bg-[#612759]","text-xl","content-center");
+    textGenre.classList.add("rounded-xl","col-span-3","m-2","row-span-1","justify-center","font-bold","bg-[#ffacac]","dark:bg-[#3c096c]","text-xl","content-center");
 
     let leaderboard = document.createElement("p");
-    leaderboard.classList.add("m-2","bg-[#ffacac]","dark:bg-[#612759]","rounded-xl","shadow-lg","p-1","content-center", "font-bold", "text-xl", "row-start-4", "col-start-4");
+    leaderboard.classList.add("m-2","bg-[#ffacac]","dark:bg-[#3c096c]","rounded-xl","shadow-lg","p-1","content-center", "font-bold", "text-xl", "row-start-4", "col-start-4");
     
     let episode = document.createElement("p");
-    episode.classList.add("m-2","bg-[#ffacac]","dark:bg-[#612759]","rounded-xl","shadow-lg","p-1","content-center", "font-bold", "text-xl", "col-span-2","col-start-5","row-start-4");
+    episode.classList.add("m-2","bg-[#ffacac]","dark:bg-[#3c096c]","rounded-xl","shadow-lg","p-1","content-center", "font-bold", "text-xl", "col-span-2","col-start-5","row-start-4");
 
     let description = document.createElement("p");
-    description.classList.add("m-2","bg-[#ffacac]","dark:bg-[#612759]","rounded-xl","shadow-lg","p-1","text-justify","p-3","col-span-6");
+    description.classList.add("m-2","bg-[#ffacac]","dark:bg-[#3c096c]","rounded-xl","shadow-lg","p-1","text-justify","p-3","col-span-6");
     
     
     Title.textContent += titleValue;
@@ -139,7 +139,7 @@ function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue, episo
     for (let i = 0; i < typeValue.length; i++){
         let type = document.createElement("p");
         let divContent = document.createElement("div")
-        divContent.classList.add("m-2","bg-[#ffacac]","dark:bg-[#612759]","rounded-xl","shadow-lg","p-1","col-span-1","row-span-1","bg-[#ffacac]","content-center","object-cover")
+        divContent.classList.add("m-2","bg-[#ffacac]","dark:bg-[#3c096c]","rounded-xl","shadow-lg","p-1","col-span-1","row-span-1","bg-[#ffacac]","content-center","object-cover")
         type.textContent = typeValue[i];
         
         divContent.appendChild(type)
