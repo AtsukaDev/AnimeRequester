@@ -1,10 +1,17 @@
 const searchInput = document.getElementById('searchQuery');
 const typeSearch = document.getElementById('searchSelect');
+export function handle404(cardDiv){
+    cardDiv.innerHTML = `
+    <div class="flex items-center justify-center content-center">
+    <h2 class="text-3xl dark:text-white"> Aucun résultat n'a été trouvé pour cette recherche.. </h2>
+    <img src="https://media.tenor.com/Jfvooie8DbAAAAAj/monkey-cymbals.gif" class="justify-center" />
+    </div>
+    `
+}
 
 export async function getAnime(genresButtonDiv, cardDiv) {
 
     const input = searchInput.value;
-    console.log(input);
 
     const options = {
         method: 'GET',

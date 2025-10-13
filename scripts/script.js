@@ -1,5 +1,5 @@
-import { clearCards, generateCard, handle404 } from "./cards.js";
-import { getAnime } from "./anime.js";
+import { clearCards, generateCard } from "./cards.js";
+import { getAnime, handle404 } from "./anime.js";
 import { initializeDarkmode } from "./darkmode.js";
 const typeSearch = document.getElementById('searchSelect');
 const searchButton = document.getElementById('searchButton');
@@ -18,7 +18,9 @@ for (let genre of animeGenres) {
 
 searchButton.addEventListener("click", searchAnime);
 initializeDarkmode();
-document.getElementById("clearButton").addEventListener("click", clearCards);
+document.getElementById("clearButton").addEventListener("click", () => {
+    clearCards(cardDiv)
+});
 
 async function searchAnime() {
     clearCards(cardDiv);

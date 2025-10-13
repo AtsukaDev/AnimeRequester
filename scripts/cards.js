@@ -1,3 +1,4 @@
+
 export function clearCards(cardDiv) {
     while (cardDiv.firstChild) {
         cardDiv.removeChild(cardDiv.firstChild);
@@ -63,13 +64,4 @@ export function generateCard(titleValue, imgCardUrl, descriptionValue, typeValue
     card.appendChild(grid);
     card.appendChild(description);
     cardDiv.appendChild(card);
-}
-
-export function handle404(cardDiv){
-    cardDiv.innerHTML = `
-    <div class="flex items-center justify-center content-center">
-    <h2 class="text-3xl dark:text-white"> Aucun résultat n'a été trouvé pour cette recherche.. </h2>
-    <img src="https://media.tenor.com/Jfvooie8DbAAAAAj/monkey-cymbals.gif" class="justify-center" />
-    </div>
-    `
 }
