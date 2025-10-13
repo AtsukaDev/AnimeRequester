@@ -16,6 +16,18 @@ for (let genre of animeGenres) {
     `
 }
 
+while(localStorage.getItem('api-key') == null){
+    let res = prompt('PASTE YOUR API KEY');
+    localStorage.setItem('api-key', res);
+}
+
+document.getElementById('apikeyButton').addEventListener("click", () => {
+    let res = prompt('PASTE YOUR API KEY');
+    localStorage.setItem('api-key', res);
+})
+
+
+
 searchButton.addEventListener("click", searchAnime);
 initializeDarkmode();
 document.getElementById("clearButton").addEventListener("click", () => {

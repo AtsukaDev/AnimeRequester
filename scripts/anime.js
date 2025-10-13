@@ -3,10 +3,14 @@ const typeSearch = document.getElementById('searchSelect');
 export function handle404(cardDiv){
     cardDiv.innerHTML = `
     <div class="flex items-center justify-center content-center">
-    <h2 class="text-3xl dark:text-white"> Aucun résultat n'a été trouvé pour cette recherche.. </h2>
+    <h2 class="text-3xl dark:text-white">Nothing has been found for this entry.. </h2>
     <img src="https://media.tenor.com/Jfvooie8DbAAAAAj/monkey-cymbals.gif" class="justify-center" />
     </div>
     `
+}
+
+export function handle403(){
+    alert("You're api key is not valid, change it using the top-left button");
 }
 
 export async function getAnime(genresButtonDiv, cardDiv) {
@@ -16,7 +20,7 @@ export async function getAnime(genresButtonDiv, cardDiv) {
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '323150c3bamsh6b82d834895abd1p187c69jsn867625905ec0',
+            'x-rapidapi-key': localStorage.getItem('api-key'),
             'x-rapidapi-host': 'anime-db.p.rapidapi.com'
         }
     };
@@ -54,6 +58,9 @@ export async function getAnime(genresButtonDiv, cardDiv) {
     }
 
     const response = await fetch(url, options);
+    if(response.status== 403){
+        handle403();
+    }
     if (response.status != 200) {
         handle404(cardDiv);
         return [];
