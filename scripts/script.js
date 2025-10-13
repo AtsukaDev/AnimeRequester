@@ -59,6 +59,15 @@ darkModeButton.addEventListener("click", function () {
 
 document.getElementById("clearButton").addEventListener("click", clearCards);
 
+function handle404(){
+    cardDiv.innerHTML = `
+    <div class="flex items-center justify-center content-center">
+    <h2 class="text-3xl"> Aucun résultat n'a été trouvé pour cette recherche.. </h2>
+    <img src="https://media.tenor.com/Jfvooie8DbAAAAAj/monkey-cymbals.gif" class="justify-center" />
+    </div>
+    `
+}
+
 
 async function getAnime() {
 
@@ -90,10 +99,6 @@ async function getAnime() {
             }
         }
 
-       
-
-
-
     }
     else if (typeSearch.value == "id") {
         // Search by id
@@ -110,7 +115,10 @@ async function getAnime() {
     }
 
     const response = await fetch(url, options);
-    if (response.status != 200) return [];
+    if (response.status != 200) {
+        handle404();
+        return [];
+    };
     let data = (await response.json());
     return data;
 }
@@ -181,8 +189,10 @@ async function searchAnime() {
     clearCards();
     const data = await getAnime();
 
-    console.log(data)
-    if (typeSearch.value != "title") {
+    if(data.length == 0){
+        handle404();
+    }
+    else if (typeSearch.value != "title") {
         generateCard(data.title, data.image, data.synopsis, data.genres, data.episodes, data.ranking);
     }
     else {
