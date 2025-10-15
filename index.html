@@ -23,7 +23,7 @@
 
 <body class="bg-[#ffc6c2] dark:bg-[#10002b]  h-[100vh]">
   <div class="absolute left-0 mt-4 ml-4">
-    <button id="apikeyButton" type="button" class="border-2 p-2 border-black rounded-xl">
+    <button id="apikeyOpen" type="button" class="border-2 p-2 border-black rounded-xl dark:text-white dark:border-white">
       Edit api key
     </button>
   </div>
@@ -80,7 +80,15 @@
     </div>
   </div>
 
-
+<div id="formApikey" class="absolute hidden top-0 bg-opacity-30 bg-black w-full h-full content-center justify-center items-center z-0">
+  <div class="absolute w-3/4 md:w-1/2 p-8 bg-[#ffc6c2] rounded-2xl border-4 border-[#FF7A7A] top-1/3 mx-16 md:left-1/4 z-50 dark:bg-[#3c096c] dark:border-[#240046]">
+    <button id="closeApikey" class="absolute top-0 right-0 mr-4 mt-4"><i class="fa-solid fa-xmark text-2xl dark:text-white"></i></button>
+    <h1 class="text-center text-2xl font-bold dark:text-white">Editing Api Key</h1>
+    <h3 class="italic dark:text-white">You can get it <a href="https://rapidapi.com/brian.rofiq/api/anime-db" class="text-white dark:underline">here</a></h3>
+    <input id="apikeyValue"  class="mt-2 mb-8 rounded-xl px-2 w-3/4"/>
+    <button id="validApikey" class="absolute bottom-0 right-0 bg-[#39ad58] mb-4 mr-4 py-2 px-4 rounded-xl font-bold dark:text-white">Confirm</button>
+  </div>
+</div>
 
 
 </body>

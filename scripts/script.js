@@ -1,6 +1,7 @@
 import { clearCards, generateCard } from "./cards.js";
 import { getAnime, handle404 } from "./anime.js";
 import { initializeDarkmode } from "./darkmode.js";
+import { initializeApikey } from "./apikey.js";
 const typeSearch = document.getElementById('searchSelect');
 const searchButton = document.getElementById('searchButton');
 const cardDiv = document.getElementById('animeCards');
@@ -16,19 +17,8 @@ for (let genre of animeGenres) {
     `
 }
 
-while(localStorage.getItem('api-key') == null){
-    let res = prompt('PASTE YOUR API KEY');
-    localStorage.setItem('api-key', res);
-}
-
-document.getElementById('apikeyButton').addEventListener("click", () => {
-    let res = prompt('PASTE YOUR API KEY');
-    localStorage.setItem('api-key', res);
-})
-
-
-
 searchButton.addEventListener("click", searchAnime);
+initializeApikey();
 initializeDarkmode();
 document.getElementById("clearButton").addEventListener("click", () => {
     clearCards(cardDiv)
