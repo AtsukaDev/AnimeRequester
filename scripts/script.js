@@ -17,6 +17,11 @@ for (let genre of animeGenres) {
     `
 }
 
+document.getElementById('searchQuery').addEventListener("keypress", (e)=>{
+    if(e.key == "Enter"){
+        searchAnime();
+    }
+})
 searchButton.addEventListener("click", searchAnime);
 initializeApikey();
 initializeDarkmode();
